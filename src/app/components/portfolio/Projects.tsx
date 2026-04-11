@@ -9,34 +9,44 @@ export function Projects() {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Gaming Rating Website',
       description:
-        'Full-featured online store with payment integration, inventory management, and real-time analytics.',
+        'A Game Rating Website is an online platform where users can explore, review, and rate different video games based on their personal experience. The website provides detailed information about games, including genre, release date, developer, and gameplay features.',
       image:
-        'https://images.unsplash.com/photo-1627634771521-9754fe2bc49b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+        'https://i.postimg.cc/x811MNfL/Screenshot-2026-03-02-225059.png',
+      tags: ['React', 'Node.js', 'talwind css', 'mongoDB'],
+      github: 'https://github.com/saifur2468/Assignment-10-client',
+      live: 'https://gaming-rating.web.app/',
     },
     {
-      title: 'Task Management App',
-      description:
-        'Collaborative project management tool with real-time updates, team chat, and productivity tracking.',
-      image:
-        'https://images.unsplash.com/photo-1627634771121-fa3db5779f60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      tags: ['Next.js', 'TypeScript', 'MongoDB', 'Socket.io'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      title: "Apartment Booking Website",
+      description: "Full-stack Apartment Booking platform",
+      image: "https://i.postimg.cc/L8D2TLFG/Screenshot-2026-03-14-163117.png",
+
+      tags: ['React', 'talwind css', 'firebase', 'MongoDB',],
+     
+      github: "https://github.com/saifur2468/Assignment-12",
+       live: "https://building-e4f32.web.app/",
     },
     {
-      title: 'Social Media Dashboard',
-      description:
-        'Analytics dashboard for managing multiple social media accounts with scheduling and insights.',
-      image:
-        'https://images.unsplash.com/photo-1627634777217-c864268db30c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-      tags: ['React', 'Express', 'Redis', 'Chart.js'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      title: "Bistro Restaurant Web Application",
+      description: "Restaurant management system",
+      image: "https://i.postimg.cc/15xcBWm1/Screenshot-2026-03-23-151950.png",
+
+      tags: ['React', 'Express', 'mongoDB', 'Chart.js'],
+     
+      github: "https://github.com/saifur2468/Bistro-restaurant-client",
+       live: 'https://bistro-boss-17795.web.app/',
+    },
+    {
+      title: "Volunteer Management",
+      description: "Connect volunteers with meaningful causes",
+    image: "https://i.postimg.cc/jdGJ0vqn/Screenshot-2026-03-02-230510.png",
+    
+      tags: ['React', 'Express', 'mongoDB', 'firebase'],
+     
+      github: "https://github.com/saifur2468/Assignment-11-client-Side",
+       live: "https://volunter-managment-ae225.web.app",
     },
   ];
 
@@ -75,7 +85,7 @@ export function Projects() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center"
             >
-              
+
               {/* Image */}
               <motion.div
                 whileHover={{ scale: 1.02 }}

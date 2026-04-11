@@ -5,10 +5,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/saifur2468', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/md-saifur-rahman-62b710376/', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:alex@example.com', label: 'Email' },
+    { icon: Mail, href: 'saifdevweb@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -22,7 +22,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <Code2 className="size-6 text-emerald-400" />
             <span className="text-lg font-semibold text-white">
-              Alex Chen
+         saifur
             </span>
           </div>
 

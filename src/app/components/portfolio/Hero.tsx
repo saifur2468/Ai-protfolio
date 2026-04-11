@@ -77,7 +77,7 @@ export function Hero() {
             <div className="flex items-center gap-4 ml-4">
               <motion.a
                 whileHover={{ y: -3 }}
-                href="https://github.com"
+                href='https://github.com/saifur2468'
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 border border-zinc-700 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
@@ -87,7 +87,7 @@ export function Hero() {
 
               <motion.a
                 whileHover={{ y: -3 }}
-                href="https://linkedin.com"
+                href='https://www.linkedin.com/in/md-saifur-rahman-62b710376/'
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 border border-zinc-700 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
@@ -97,7 +97,7 @@ export function Hero() {
 
               <motion.a
                 whileHover={{ y: -3 }}
-                href="mailto:saifur@example.com"
+                href="saifdevweb@gmail.com"
                 className="p-3 border border-zinc-700 rounded-lg text-zinc-400 hover:text-white hover:border-zinc-500 transition-colors"
               >
                 <Mail className="size-5" />
