@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-
+import { Typewriter } from "react-simple-typewriter";
 export function Hero() {
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
@@ -35,28 +35,44 @@ export function Hero() {
             <span className="text-emerald-400 text-sm font-medium tracking-wider uppercase">
               Full Stack Developer
             </span>
+           
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 text-7xl font-bold text-white leading-tight"
-          >
-            Hi, I'm Saifur
-            <br />
-            <span className="text-emerald-400">Building Scalable Web Apps</span>
-          </motion.h1>
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.4 }}
+  className="mt-6 text-7xl font-bold text-white leading-tight"
+>
+  Hi, I'm Saifur
+  <br />
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-6 text-xl text-zinc-400 max-w-2xl"
-          >
-            I develop modern full stack web applications using React, Node.js, MongoDB, 
-            and scalable backend technologies to create seamless digital experiences.
-          </motion.p>
+  <span className="text-emerald-400">
+    <Typewriter
+      words={[
+        "Building Scalable Web Apps",
+        "Full Stack Developer",
+        "React & Node.js Expert"
+      ]}
+      loop={0}
+      cursor
+      cursorStyle="|"
+      typeSpeed={70}
+      deleteSpeed={40}
+      delaySpeed={1500}
+    />
+  </span>
+</motion.h1>
+
+<motion.p
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.6 }}
+  className="mt-6 text-xl text-zinc-400 max-w-2xl"
+>
+  I develop modern full stack web applications using React, Node.js, MongoDB, 
+  and scalable backend technologies to create seamless digital experiences.
+</motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

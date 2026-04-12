@@ -5,6 +5,7 @@ import { Skills } from './components/portfolio/Skills';
 import { Projects } from './components/portfolio/Projects';
 import { Contact } from './components/portfolio/Contact';
 import { Footer } from './components/portfolio/Footer';
+import { Education } from './components/portfolio/Education';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <About />
       <Skills />
       <Projects />
+      <Education></Education>
       <Contact />
       <Footer />
     </div>
