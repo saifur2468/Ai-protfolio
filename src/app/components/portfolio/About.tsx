@@ -1,112 +1,92 @@
-import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
-import { Code2, MonitorSmartphone, Layers3 } from 'lucide-react';
-import { ImageWithFallback } from '../figma/ImageWithFallback';
-import imgabout from '../../../assets/saifpi.jpg';
-export function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+import React from 'react';
+import { Code2, Laptop, Database } from 'lucide-react';
+import abimg from '../../../assets/saifpi.jpg';
 
-  const features = [
+const About = () => {
+  const services = [
     {
-      icon: Layers3,
-      title: 'Full Stack Development',
-      description:
-        'Building complete web applications with frontend, backend, and database integration.',
+      title: "Frontend Dev",
+      description: "Building fast, responsive, and interactive user interfaces using modern web technologies.",
+      icon: <Code2 className="w-6 h-6 text-blue-400" />,
     },
     {
-      icon: Code2,
-      title: 'Clean Code',
-      description:
-        'Writing maintainable, scalable, and efficient code following industry best practices.',
+      title: "Responsive Design",
+      description: "Ensuring your website looks great on all screens, from mobile devices to large desktops.",
+      icon: <Laptop className="w-6 h-6 text-blue-400" />,
     },
     {
-      icon: MonitorSmartphone,
-      title: 'Responsive Design',
-      description:
-        'Creating user-friendly interfaces that work seamlessly across all devices and screen sizes.',
+      title: "MERN Stack Development",
+      description: "Full-stack solutions with MongoDB, Express, React, and Node.js for scalable apps.",
+      icon: <Database className="w-6 h-6 text-blue-400" />,
     },
   ];
 
   return (
-    <section id="about" ref={ref} className="relative py-20 md:py-32 bg-zinc-900">
-      <div className="mx-auto max-w-7xl px-6">
+
+    <section id='about' className="py-16 px-6  mx-auto font-sans bg-zinc-950 text-white">
+      
+      {/* Top Header */}
+      <div className="mb-12">
+        <h2 className="text-3xl font-bold text-white flex items-center gap-3">
+          About <span className="h-0.5 w-16 bg-blue-500"></span>
+        </h2>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-12 items-start">
         
-        {/* Responsive Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="order-2 lg:order-1"
-          >
-            <span className="text-emerald-400 text-sm font-medium tracking-wider uppercase">
-              About Me
-            </span>
-
-            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
-              Full Stack Developer
-            </h2>
-
-            <p className="mt-6 text-base sm:text-lg text-zinc-400 leading-relaxed">
-              I'm a passionate full stack developer specializing in building modern,
-              scalable, and high-performance web applications using React, Node.js,
-              MongoDB, and backend technologies.
+        {/* Left Side: Profile Photo */}
+        <div className="w-full lg:w-1/3 flex flex-col items-center">
+    
+          <div className="relative p-1 rounded-full border-2 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.2)] mb-6">
+            <img 
+              src={abimg}
+              alt="Saifur Rahman" 
+              className="w-64 h-64 rounded-full object-cover   transition-all duration-500"
+            />
+          </div>
+          <div className="text-center">
+            <p className="text-white italic text-sm max-w-[200px]">
+              Building meaningful digital experiences through creative code.
             </p>
-
-            <p className="mt-4 text-base sm:text-lg text-zinc-400 leading-relaxed">
-              I focus on creating seamless user experiences by combining clean code,
-              responsive design, and efficient backend systems to deliver complete digital products.
-            </p>
-
-            {/* Features */}
-            <div className="mt-10 grid gap-6">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  className="flex items-start gap-4"
-                >
-                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg shrink-0">
-                    <feature.icon className="size-6 text-emerald-400" />
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-1 text-sm sm:text-base text-zinc-500">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Right Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative order-1 lg:order-2"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-zinc-800">
-              <ImageWithFallback
-                src={imgabout}
-                alt="Developer at work"
-                className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" />
-            </div>
-          </motion.div>
-
+          </div>
         </div>
+
+        {/* Right Side: Content & Cards */}
+        <div className="w-full lg:w-2/3">
+     
+          <h1 className="text-4xl font-bold text-white mb-4">
+            <span className="text-blue-500"></span>   Full Stack Developer
+          </h1>
+          <p className="text-white text-lg leading-relaxed mb-10">
+            I'm a passionate full stack developer specializing in building modern,
+              scalable, and high-performance web applications using React, Node.js,
+              MongoDB, and backend technologies I focus on creating seamless user experiences by combining clean code,
+              responsive design, and efficient backend systems to deliver complete digital products.
+          </p>
+
+          {/* Cards Container */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <div 
+                key={index} 
+                className="bg-[#111111] p-6 rounded-2xl border border-white/5 flex flex-col items-center text-center hover:border-blue-500/30 hover:bg-[#161616] transition-all group"
+              >
+               
+                <div className="bg-blue-500/10 p-4 rounded-xl mb-4 group-hover:scale-110 transition-transform">
+                  {service.icon}
+                </div>
+                <h4 className="text-white font-bold text-lg mb-2">{service.title}</h4>
+                <p className="text-gray-500 text-sm leading-snug">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
-}
+};
+
+export default About;

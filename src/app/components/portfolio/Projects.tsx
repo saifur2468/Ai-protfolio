@@ -1,168 +1,227 @@
-import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
-import { ImageWithFallback } from '../figma/ImageWithFallback';
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
+import { FaArrowRight, FaGithub } from "react-icons/fa";
 
-export function Projects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const projects = [
-    {
-      title: 'Gaming Rating Website',
-      description:
-        'A Game Rating Website is an online platform where users can explore, review, and rate different video games based on their personal experience. The website provides detailed information about games, including genre, release date, developer, and gameplay features.',
-      image:
-        'https://i.postimg.cc/x811MNfL/Screenshot-2026-03-02-225059.png',
-      tags: ['React', 'Node.js', 'talwind css', 'mongoDB'],
-      github: 'https://github.com/saifur2468/Assignment-10-client',
-      live: 'https://gaming-rating.web.app/',
-    },
-    {
-      title: "Apartment Booking Website",
-      description: "Full-stack Apartment Booking platform",
-      image: "https://i.postimg.cc/L8D2TLFG/Screenshot-2026-03-14-163117.png",
-
-      tags: ['React', 'talwind css', 'firebase', 'MongoDB',],
-     
-      github: "https://github.com/saifur2468/Assignment-12",
-       live: "https://building-e4f32.web.app/",
-    },
-    {
-      title: "Bistro Restaurant Web Application",
-      description: "Restaurant management system",
-      image: "https://i.postimg.cc/15xcBWm1/Screenshot-2026-03-23-151950.png",
-
-      tags: ['React', 'Express', 'mongoDB', 'Chart.js'],
-     
-      github: "https://github.com/saifur2468/Bistro-restaurant-client",
-       live: 'https://bistro-boss-17795.web.app/',
-    },
-    {
-      title: "Volunteer Management",
-      description: "Connect volunteers with meaningful causes",
+const projects = [
+  {
+    title: "Gaming Rating Website",
+    image: "https://i.postimg.cc/x811MNfL/Screenshot-2026-03-02-225059.png",
+    description: "A full-stack MERN app for Game Rating",
+    features: [
+      "User Authentication",
+      "Add & Review Games",
+      "Rating System",
+      "Responsive UI",
+    ],
+    technology: ["React", "Node.js", "MongoDB", "Firebase"],
+    liveLink: "https://gaming-rating.web.app/",
+    github: "https://github.com/saifur2468/Assignment-10-client",
+  },
+  {
+    title: "Apartment Booking Website",
+    image: "https://i.postimg.cc/L8D2TLFG/Screenshot-2026-03-14-163117.png",
+    description: "Full-stack Apartment Booking platform",
+    features: [
+      "User Login & Register",
+      "Apartment Booking",
+      "Payment System",
+      "Admin Dashboard",
+    ],
+    technology: ["React", "Node.js", "MongoDB", "Tailwind" ,"Firebase"],
+    liveLink: "https://building-e4f32.web.app/",
+    github: "https://github.com/saifur2468/Assignment-12",
+  },
+  {
+    title: "Volunteer Management",
     image: "https://i.postimg.cc/jdGJ0vqn/Screenshot-2026-03-02-230510.png",
-    
-      tags: ['React', 'Express', 'mongoDB', 'firebase'],
-     
-      github: "https://github.com/saifur2468/Assignment-11-client-Side",
-       live: "https://volunter-managment-ae225.web.app",
-    },
-  ];
+    description: "Connect volunteers with meaningful causes",
+    features: [
+      "Create Volunteer Posts",
+      "Join Requests",
+      "User Dashboard",
+      "Real-time Updates",
+    ],
+    technology: ["React", "Express", "MongoDB", "Tailwind"],
+    liveLink: "https://volunter-managment-ae225.web.app",
+    github:
+      "https://github.com/saifur2468/Assignment-11-client-Side",
+  },
+  {
+    title: "Bistro Restaurant Web Application",
+    image: "https://i.postimg.cc/15xcBWm1/Screenshot-2026-03-23-151950.png",
+    description: "Restaurant management system",
+    features: [
+      "Food Ordering",
+      "Cart & Payment",
+      "Table Booking",
+      "Admin Control Panel",
+    ],
+    technology: ["React", "Firebase", "Node.js", "MongoDB"],
+    liveLink: "https://bistro-boss-17795.web.app/",
+    github:
+      "https://github.com/saifur2468/Bistro-restaurant-client",
+  },
+];
+
+const ProjectSection = () => {
+  const btnRef = useRef(null);
+  const spanRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!btnRef.current || !spanRef.current) return;
+
+      const { width } = btnRef.current.getBoundingClientRect();
+      const offset = e.offsetX;
+      const left = `${(offset / width) * 100}%`;
+
+      spanRef.current.animate({ left }, { duration: 250, fill: "forwards" });
+    };
+
+    const handleMouseLeave = () => {
+      if (!spanRef.current) return;
+
+      spanRef.current.animate(
+        { left: "50%" },
+        { duration: 200, fill: "forwards" }
+      );
+    };
+
+    const button = btnRef.current;
+
+    if (button) {
+      button.addEventListener("mousemove", handleMouseMove);
+      button.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      if (button) {
+        button.removeEventListener("mousemove", handleMouseMove);
+        button.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
 
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className="relative py-20 md:py-32 bg-zinc-900"
-    >
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="project" className="py-20  min-h-screen bg-zinc-950 ">
+      <div className="container mx-auto px-6">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 md:mb-20"
-        >
-          <span className="text-emerald-400 text-sm font-medium tracking-wider uppercase">
-            Portfolio
-          </span>
+        <div className="mb-12">
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="text-6xl font-bold text-center text-white mb-2"
+          >
+            All Projects
+          </motion.h2>
+        </div>
 
-          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Featured Projects
-          </h2>
-        </motion.div>
-
-        {/* Projects */}
-        <div className="space-y-16 md:space-y-24">
-
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center"
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative h-[320px] overflow-hidden rounded-xl"
             >
-
               {/* Image */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className={`lg:col-span-3 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
+              <div className="absolute inset-0">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition"></div>
+              </div>
+
+              {/* Top Icon */}
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-5 right-5 p-2 rounded-full border border-white/40 hover:bg-white hover:text-black transition"
               >
-                <div className="relative rounded-xl overflow-hidden border border-zinc-800">
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-[220px] sm:h-[300px] md:h-[400px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                </div>
-              </motion.div>
+                <FiArrowUpRight className="text-white group-hover:text-black" />
+              </a>
 
               {/* Content */}
-              <div className={`lg:col-span-2 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    x: index % 2 === 0 ? 50 : -50,
-                  }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.2 + 0.2 }}
-                >
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                    {project.title}
-                  </h3>
+              <div className="absolute bottom-0 left-0 p-6 w-full text-white">
+                <h3 className="text-2xl font-bold mb-1">
+                  {project.title}
+                </h3>
 
-                  <p className="mt-4 text-sm sm:text-base text-zinc-400 leading-relaxed">
-                    {project.description}
-                  </p>
+                <p className="text-sm text-gray-300 mb-2">
+                  {project.description}
+                </p>
 
-                  {/* Tags */}
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-zinc-800 border border-zinc-700 text-emerald-400 rounded-full text-xs sm:text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                {/* Features */}
+                <ul className="text-xs text-gray-300 list-disc ml-4 mb-2">
+                  {project.features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
 
-                  {/* Buttons */}
-                  <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                    <motion.a
-                      whileHover={{ y: -3 }}
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-6 py-3 border border-zinc-700 rounded-lg text-zinc-400 hover:text-white hover:border-emerald-500 transition-colors w-full sm:w-auto"
+                {/* Technology */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.technology?.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="text-[10px] px-2 py-1 bg-gradient-to-r from-cyan-400 to-blue-500 text-black rounded"
                     >
-                      <Github className="size-5" />
-                      <span>Code</span>
-                    </motion.a>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                    <motion.a
-                      whileHover={{ y: -3 }}
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-6 py-3 bg-emerald-500 text-zinc-950 rounded-lg hover:bg-emerald-400 transition-colors w-full sm:w-auto"
-                    >
-                      <ExternalLink className="size-5" />
-                      <span>Live Demo</span>
-                    </motion.a>
-                  </div>
-                </motion.div>
+                {/* Buttons */}
+                <div className="flex gap-3">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1 bg-white text-black rounded flex items-center gap-1"
+                  >
+                    Live
+                  </a>
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1 border border-white rounded flex items-center gap-1"
+                  >
+                    <FaGithub /> Code
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
+        </div>
 
+        {/* Button */}
+        <div className="flex justify-center mt-16">
+          <motion.button
+            whileTap={{ scale: 0.98 }}
+            ref={btnRef}
+            className="relative w-full max-w-xs overflow-hidden rounded-lg bg-emerald-400 px-4 py-3 text-lg font-medium text-blue-400"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-2 mix-blend-difference">
+              See All Projects <FaArrowRight />
+            </span>
+
+            <span
+              ref={spanRef}
+              className="absolute left-[50%] top-[50%] h-32 w-32 -translate-x-[50%] -translate-y-[50%] rounded-full bg-slate-100"
+            />
+          </motion.button>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ProjectSection;

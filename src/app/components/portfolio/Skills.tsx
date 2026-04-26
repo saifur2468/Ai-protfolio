@@ -46,7 +46,7 @@ export function Skills() {
   ];
 
   return (
-    <section id="skills" ref={ref} className="relative py-20 md:py-32 bg-zinc-950">
+    <section id="skills" ref={ref} className="relative py-20 md:py-32 bg-zinc-950 ">
       <div className="mx-auto max-w-7xl px-6">
 
         {/* Header */}
