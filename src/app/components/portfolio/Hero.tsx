@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { Typewriter } from "react-simple-typewriter";
+import { FaDownload } from 'react-icons/fa';
 export function Hero() {
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
@@ -86,8 +87,8 @@ export function Hero() {
               onClick={scrollToProjects}
               className="flex items-center gap-2 px-8 py-4 bg-emerald-500 text-zinc-950 rounded-lg hover:bg-emerald-400 transition-colors"
             >
-              <span className="font-semibold">View Projects</span>
-              <ArrowRight className="size-5" />
+              <span className="font-semibold">Resume</span>
+              <FaDownload className="size-4" />
             </motion.button>
 
             <div className="flex items-center gap-4 ml-4">

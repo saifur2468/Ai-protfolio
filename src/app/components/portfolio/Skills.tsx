@@ -6,7 +6,7 @@ import { SiAxios } from "react-icons/si";
 import {
   SiJavascript,
   SiReact,
-  SiRedux,
+  SiFirebase,
   SiTypescript,
   SiNextdotjs,
   SiTailwindcss,
@@ -27,7 +27,7 @@ export function Skills() {
   const skills = [
     { name: 'JavaScript', icon: SiJavascript,  },
     { name: 'React', icon: SiReact,  },
-    { name: 'Redux', icon: SiRedux,  },
+    { name: 'Firebase', icon: SiFirebase,  },
     { name: 'TypeScript', icon: SiTypescript,  },
     { name: 'Next.js', icon: SiNextdotjs,  },
     { name: 'Tailwind CSS', icon: SiTailwindcss,  },
